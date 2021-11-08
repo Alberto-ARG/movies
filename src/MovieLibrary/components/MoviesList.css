@@ -1,17 +1,13 @@
-.movies-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+ .items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-
-.movies-list > .items {
-  width: 20%;
+.expanded-movie-item :hover{
+  transform: scale(110%);
+  cursor:pointer
 }
-
-.expanded-movie-item {
-  width: 80%;
-  display: flex;
-  flex-direction: row;
+.expanded-movie-item img {
+  width: 100%;
 }
 
 .expanded-movie-item h4 {

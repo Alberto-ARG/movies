@@ -17,7 +17,7 @@ export default class MoviesList extends PureComponent {
 
   handleSelectMovie = item => this.setState({selectedMovie: item})
 
-  handleSortingChange = sortingType => console.log(sortingType)
+  
 
   render() {
 
@@ -27,21 +27,15 @@ export default class MoviesList extends PureComponent {
     return (
       <div className="movies-list">
         <div className="items">
-          <div>
-            <span>Sort by:</span>
-            <SortingOptions onChange={this.handleSortingChange}/>
-          </div>
+         
           {
             movies.map(movie =>
-              <MovieListItem key={movie.id} movie={movie} isSelected={selectedMovie===movie} onSelect={this.handleSelectMovie}/>
+              //<MovieListItem key={movie.id} movie={movie} isSelected={selectedMovie===movie} onSelect={this.handleSelectMovie}/>
+              <ExpandedMovieItem  key={movie.id} movie={movie} />
             )
           }
         </div>
-        {
-          selectedMovie && (
-            <ExpandedMovieItem movie={selectedMovie} />
-          )
-        }
+      
       </div>
     )
   }
@@ -50,11 +44,6 @@ export default class MoviesList extends PureComponent {
 const ExpandedMovieItem = ({movie: {title, original_title, poster_path, overview, vote_average, vote_count}}) => (
   <div className="expanded-movie-item">
     <TMDBImage src={poster_path} className="poster" />
-    <div className="description">
-      <h2>{title}({original_title})</h2>
-      <div><h4>Rank(votes count)</h4>: <span>{vote_average}({vote_count})</span></div>
-      <span>{overview}</span>
-    </div>
   </div>
 )
 
@@ -73,29 +62,5 @@ class MovieListItem extends Component {
   }
 }
 
-class SortingOptions extends Component {
 
-  state = {
-    value: ''
-  }
-
-  handleChange = e => {
-    const selectedValue = e.target.value
-    const {onChange} = this.props
-    this.setState({value: selectedValue})
-    onChange(selectedValue)
-  }
-
-  render() {
-
-    return (
-      <select value={this.state.value} onChange={this.handleChange}>
-        <option value=""></option>
-        <option value="name_asc">A -> Z</option>
-        <option value="name_desc">Z -> A</option>
-        <option value="rating">Rating</option>
-      </select>
-    )
-  }
-}
 
