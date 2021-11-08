@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import PropTypes from 'prop-types'
+
+
 import {fetchTopRatedMovies} from '../store/actions'
 
 
@@ -20,6 +21,15 @@ class MovieLibrary extends Component {
     fetchTopRatedMovies()
   }
   handleSortingChange = sortingType => console.log(sortingType)
+
+
+  handleCallback = (childData) =>{
+    const {selectedMovie} = this.props
+   // this.setState({peliElegida: childData})
+    selectedMovie(childData);
+  }
+
+
   render() {
     const {movies} = this.props
     return (
@@ -33,7 +43,7 @@ class MovieLibrary extends Component {
           </div>
         </header>
         <div className="ML-intro">
-          { movies.length && <MoviesList movies={movies}/> }
+          { movies.length && <MoviesList movies={movies} selectMovie={this.handleCallback}/> }
         </div>
       </div>
     );
