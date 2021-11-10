@@ -22,12 +22,12 @@ class MovieLibrary extends Component {
   }
   handleSortingChange = sortingType => console.log(sortingType)
 
-
+/*
   handleCallback = (childData) =>{
     const {selectedMovie} = this.props
    // this.setState({peliElegida: childData})
     selectedMovie(childData);
-  }
+  }*/
 
 
   render() {
@@ -43,12 +43,12 @@ class MovieLibrary extends Component {
           </div>
         </header>
         <div className="ML-intro">
-          { movies.length && <MoviesList movies={movies} selectMovie={this.handleCallback}/> }
+          { movies.length && <MoviesList movies={movies}/> }
         </div>
       </div>
     );
   }
-}
+}// { movies.length && <MoviesList movies={movies} selectMovie={this.handleCallback}/> }
 
 export default connect(state => ({
   movies: getMovies(state)

@@ -38,7 +38,7 @@ export default class MoviesList extends PureComponent {
           {
             movies.map(movie =>
               //<MovieListItem key={movie.id} movie={movie} />
-              <ExpandedMovieItem  key={movie.id} movie={movie} isSelected={selectedMovie===movie} onSelect={this.handleSelectMovie}/>
+              <ExpandedMovieItem  key={movie.id} movie={movie}/>
             )
           }
         </div>
@@ -46,24 +46,24 @@ export default class MoviesList extends PureComponent {
       </div>
     )
   }
-}
+}// <ExpandedMovieItem  key={movie.id} movie={movie} isSelected={selectedMovie===movie} onSelect={this.handleSelectMovie}/>
 
 
 class ExpandedMovieItem extends Component {
-
+  /*
   handleClick = () => {
     const {movie, onSelect} = this.props
     onSelect(movie);
-  }
+  }*/
 
   render() {
     const {movie: { poster_path}} = this.props
     return (
       <div className="expanded-movie-item">
-         <TMDBImage src={poster_path} className="poster" onClick={this.handleClick}/>
+         <TMDBImage src={poster_path} className="poster"/>
       </div>
 
-    )
+    )//<TMDBImage src={poster_path} className="poster" onClick={this.handleClick}/>
   }
 }
 /*
